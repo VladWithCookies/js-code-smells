@@ -306,17 +306,9 @@ describeFruit(fruit);
 ## Inappropriate Intimacy
 A class that has dependencies on the implementation details of another class is considered to be too intimate.
 
-We don’t want classes that depend on the implementation of the other classes because this means that we have to change both classes when the first class change.
-
 There isn’t enough encapsulation of the fields or implementation of the methods.
 
 The lack of encapsulation may arise from exposing the fields of the class. Letting us set field values directly is probably not good in most cases.
-
-Writing code that adheres to some interface is impossible because it’s very hard to change a class to follow an interface since so many other classes depend on the implementation of the given class.
-
-Too many interactions between classes also cause confusion because the workflow is hard to trace. This is the object-oriented version of spaghetti code.
-
-Any changes in a class that other classes are too dependent on also creates problems when we change them since they’re so tightly coupled, we have to change all the classes that depend on it to change it. This exacerbates the problem of maintainability of code, in addition to spaghetti code.
 
 ```js
 // Bad
@@ -337,7 +329,7 @@ class ShapeCalculator {
     this.box = new Box();
   }
   
-  getBoxSurfaceArea() {
+  getBoxArea() {
     return this.box.getArea();
   }
   
@@ -347,5 +339,32 @@ class ShapeCalculator {
 }
 
 // Better
-TODO
-```
+class Box {
+  constructor() {
+    this.length = 1;
+    this.width = 1;
+    this.height = 1;
+  }
+  
+  getArea() {
+    return 2 * (this.height * this.width) + 2 * (this.height * this.length) + 2 * (this.length * this.width)
+  }  
+  
+  getVolume() {
+    return this.length * this.width * this.height;
+  }
+}
+
+class ShapeCalculator {
+  constructor() {
+    this.box = new Box();
+  }
+  
+  getBoxArea() {
+    return this.box.getArea();
+  }
+  
+  getBoxVolume() {
+    return this.box.getVolume();
+  }
+}```
