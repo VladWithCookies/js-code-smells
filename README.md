@@ -33,26 +33,11 @@ const getFruitColor = (fruit) => fruit.color;
 
 ## Duplicate code
 This is a problem because we have to change multiple pieces of code when we have to change duplicate code. Also, it’s easy to forget that they’re there by other developers.
+
 This is why the don’t repeat yourself (DRY) principle is emphasized a lot. It saves developers time.
-
-```js
-// Bad
-TODO
-
-// Better
-TODO
-```
 
 ## Complexity
 If there’s a simpler solution, we should go for that instead of writing something more complex.
-
-```js
-// Bad
-TODO
-
-//Better
-TODO
-```
 
 ## Shotgun Surgery
 Shotgun surgery is a change that requires code to be multiple pieces of code to be changed.
@@ -202,4 +187,165 @@ class ShapeCalculator {
     return this.rectangle.getArea();
   }
 }
+```
+
+## Lazy or Freeloader Class
+A lazy or freeloader class is a class that does too little. If it doesn’t do much, it probably shouldn’t be added since it’s mostly useless.
+
+We should find a way to put whatever is in the lazy class into a place that has more stuff. A class that has only one or two methods probably isn’t too useful.
+
+## Excessive Use of Literals
+Using literals too much isn’t a good idea because repeating them will bring in more chances for errors. This is because we have to change each of them when we change code if there are too many of them.
+
+```js
+// Bad
+const mediumRequest = fetch('http://medium.com');
+const mediumJsUrl = 'https://medium.com/topic/javascript';
+
+// Better
+const MEDIUM_URL = 'http://medium.com';
+const mediumRequest = fetch(MEDIUM_URL)
+const mediumJsUrl = `${MEDIUM_URL}/topic/javascript`;
+```
+
+## Cyclomatic Complexity
+Cyclomatic complexity means that there are too many conditional statements and loops in our code.
+
+The complexity can arise in different ways. Loops and conditionals can be nested too deeply. More than two levels of nesting is probably too much and hard to read.
+
+```js
+// Bad
+for (let f of foo) {
+  if (Array.isArray(bar)) {
+    for (let b of bar) {
+      for (let z of baz) {
+        //...
+      }
+    }
+  }
+}
+
+// Better
+const doSOmethignWithBaz = (baz) => {
+  for (let z of baz) {
+    //...
+  }
+}
+
+for (let f of foo) {
+  if (!Array.isArray(bar)) {
+    continue;
+  }
+  
+  for (let b of bar) {
+    doSOmethignWithBaz(baz);
+  }
+}
+```
+
+## Orphaned Variable or Constant Class
+These are classes that have a collection of constants that belong elsewhere rather than in their own class.
+
+```js
+// Bad
+class Color {
+  constructor() {
+    this.apple = 'red';
+  }
+}
+
+class Apple {
+  constructor() {
+    this.color = new Color().apple;
+  }
+}
+
+// Better
+class Apple {
+  constructor() {
+    this.color = 'red';
+  }
+}
+```
+
+## Data Clump
+A data clump is a situation where we have too many variables passed around together in various parts of a program. This means that we should group these together into their own objects and pass them together.
+
+```js
+// Bad
+let fruitColor = 'red';
+let fruitName = 'apple';
+let fruitSize = 'small';
+let fruitPrice = 1;
+let fruitNumSeeds = 2;
+let fruitType = 'Granny Smith';
+
+const describeFruit = (color, name, size, price, seedsCount, type) => {
+  return `${fruitName} is ${fruitColor}. It's ${fruitSize}. It costs ${price}. It has ${seedsCount}. The type is ${type}`;
+}
+
+describeFruit(fruitColor, fruitName, fruitSize, fruitPrice, fruitNumSeeds, fruitType);
+
+// Better
+let fruit = {
+  color: 'red',
+  name: 'apple',
+  size: 'small',
+  price: 1,
+  numSeeds: 2,
+  type: 'Granny Smith'
+};
+
+const describeFruit = ({ name, color, size, price, seedsCount, type }) => {
+  return `${name} is ${color}. It's ${size}. It costs ${price}. It has ${seedsCount}. The type is ${type}`;
+}
+
+describeFruit(fruit);
+```
+
+## Inappropriate Intimacy
+A class that has dependencies on the implementation details of another class is considered to be too intimate.
+
+We don’t want classes that depend on the implementation of the other classes because this means that we have to change both classes when the first class change.
+
+There isn’t enough encapsulation of the fields or implementation of the methods.
+
+The lack of encapsulation may arise from exposing the fields of the class. Letting us set field values directly is probably not good in most cases.
+
+Writing code that adheres to some interface is impossible because it’s very hard to change a class to follow an interface since so many other classes depend on the implementation of the given class.
+
+Too many interactions between classes also cause confusion because the workflow is hard to trace. This is the object-oriented version of spaghetti code.
+
+Any changes in a class that other classes are too dependent on also creates problems when we change them since they’re so tightly coupled, we have to change all the classes that depend on it to change it. This exacerbates the problem of maintainability of code, in addition to spaghetti code.
+
+```js
+// Bad
+class Box {
+  constructor() {
+    this.length = 1;
+    this.width = 1;
+    this.height = 1;
+  }
+  
+  getArea() {
+    return 2 * (this.height * this.width) + 2 * (this.height * this.length) + 2 * (this.length * this.width)
+  }
+}
+
+class ShapeCalculator {
+  constructor() {
+    this.box = new Box();
+  }
+  
+  getBoxSurfaceArea() {
+    return this.box.getArea();
+  }
+  
+  getBoxVolume() {
+    return this.box.length * this.box.width * this.box.height;
+  }
+}
+
+// Better
+TODO
 ```
