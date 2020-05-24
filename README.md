@@ -177,7 +177,8 @@ Primitives are often used to “simulate” types. So instead of a separate data
 ```js
 // Bad
 class Order {
-  customer: 'General Kenobi'
+  customerName ='General Kenobi',
+  customerEmail = 'kenobi@test.io'
 }
 
 // Better
@@ -188,7 +189,8 @@ class Order {
 }
 
 class Customer {
-  name: 'General Kenobi'
+  name = 'General Kenobi'
+  email = 'kenobi@test.io'
 }
 ```
 
