@@ -1,5 +1,34 @@
 # JS code smells
 
+## Long method 
+Among all types of object-oriented code, classes with short methods live longest. The longer a method or function is, the harder it becomes to understand and maintain it.
+
+In addition, long methods offer the perfect hiding place for unwanted duplicate code.
+
+```js
+// Bad
+printOwing() {
+  printBanner();
+
+  // Print details.
+  console.log("name: " + name);
+  console.log("amount: " + getOutstanding());
+}
+
+
+```js
+// Better
+printOwing() {
+  printBanner();
+  printDetails(getOutstanding());
+}
+
+printDetails(outstanding) {
+  console.log("name: " + name);
+  console.log("amount: " + outstanding);
+}
+```
+
 ## Too Many Parameters
 Functions can have too many parameters. If they have too many, it makes the function more complicated when reading it and calling it. It probably means that we can clean up the code in some way to make this easier to read and use.
 
@@ -367,4 +396,5 @@ class ShapeCalculator {
   getBoxVolume() {
     return this.box.getVolume();
   }
-}```
+}
+```
