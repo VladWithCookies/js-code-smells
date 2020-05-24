@@ -15,8 +15,6 @@ printOwing() {
   console.log("amount: " + getOutstanding());
 }
 
-
-```js
 // Better
 printOwing() {
   printBanner();
