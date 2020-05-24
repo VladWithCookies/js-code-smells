@@ -10,7 +10,6 @@ In addition, long methods offer the perfect hiding place for unwanted duplicate 
 printOwing() {
   printBanner();
 
-  // Print details.
   console.log("name: " + name);
   console.log("amount: " + getOutstanding());
 }
