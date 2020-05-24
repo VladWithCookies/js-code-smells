@@ -169,6 +169,29 @@ class Employee extends Person {
 }
 ```
 
+## Primitive Obsession
+Like most other smells, primitive obsessions are born in moments of weakness. “Just a field for storing some data!” the programmer said. Creating a primitive field is so much easier than making a whole new class, right? And so it was done. Then another field was needed and added in the same way. Lo and behold, the class became huge and unwieldy.
+
+Primitives are often used to “simulate” types. So instead of a separate data type, you have a set of numbers or strings that form the list of allowable values for some entity. Easy-to-understand names are then given to these specific numbers and strings via constants, which is why they’re spread wide and far.
+
+```js
+// Bad
+class Order {
+  customer: 'General Kenobi'
+}
+
+// Better
+class Order {
+   constrictor() {
+      this.customer = new Customer();
+   }
+}
+
+class Customer {
+  name: 'General Kenobi'
+}
+```
+
 ## Feature Envy
 Feature envy means that one class uses too many features of another class. This means that most of one class reference something in another class.
 
