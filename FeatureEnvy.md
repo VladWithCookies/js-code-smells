@@ -3,7 +3,7 @@
 Feature envy means that one class uses too many features of another class. This means that most of one class reference something in another class.
 
 ## Solutions
-### Extract Method
+### Move Method
 ```js
 // Bad
 class Rectangle {
