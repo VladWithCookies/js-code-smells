@@ -1,4 +1,4 @@
-# Large class
+# Large Class
 ## Reason
 Any class that’s large is going to be hard to maintain. Classes are supposed to create objects that only do one thing. We don’t want classes that are so big that they’re doing many things.
 
