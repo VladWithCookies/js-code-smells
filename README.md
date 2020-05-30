@@ -18,57 +18,7 @@ const getFruitColor = (fruit) => {
 const getFruitColor = (fruit) => fruit.color;
 ```
 
-## Shotgun Surgery
-Shotgun surgery is a change that requires code to be multiple pieces of code to be changed.
-
-```js
-// Bad
-const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.get('/foo', (req, res) => {
-  console.log('foo called');
-  res.json({ message: 'foo' });
-});
-
-app.get('/bar', (req, res) => {
-  console.log('bar called');
-  res.json({ message: 'bar' });
-});
-
-app.get('/baz', (req, res) => {
-  console.log('baz called');
-  res.json({ message: 'baz' });
-});
-
-app.listen(3000, () => console.log('server started'));
-
-// Better
-const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use((req, res, next) => {
-  if (req.path.substring(1)) {
-    console.log(`${req.path.substring(1)} called`);
-  }
-  
-  next();
-});
-
-app.get('/foo', (req, res) => res.json({ message: 'foo' }));
-app.get('/bar', (req, res) => res.json({ message: 'bar' }));
-app.get('/baz', (req, res) => res.json({ message: 'baz' }));
-app.listen(3000, () => console.log('server started'));
-```
-
+* Shotgun Surgery
 * Large Classes
 * Primitive Obsession
 
@@ -192,40 +142,7 @@ class Apple {
 }
 ```
 
-## Data Clump
-A data clump is a situation where we have too many variables passed around together in various parts of a program. This means that we should group these together into their own objects and pass them together.
-
-```js
-// Bad
-let fruitColor = 'red';
-let fruitName = 'apple';
-let fruitSize = 'small';
-let fruitPrice = 1;
-let fruitNumSeeds = 2;
-let fruitType = 'Granny Smith';
-
-const describeFruit = (color, name, size, price, seedsCount, type) => {
-  return `${fruitName} is ${fruitColor}. It's ${fruitSize}. It costs ${price}. It has ${seedsCount}. The type is ${type}`;
-}
-
-describeFruit(fruitColor, fruitName, fruitSize, fruitPrice, fruitNumSeeds, fruitType);
-
-// Better
-let fruit = {
-  color: 'red',
-  name: 'apple',
-  size: 'small',
-  price: 1,
-  numSeeds: 2,
-  type: 'Granny Smith'
-};
-
-const describeFruit = ({ name, color, size, price, seedsCount, type }) => {
-  return `${name} is ${color}. It's ${size}. It costs ${price}. It has ${seedsCount}. The type is ${type}`;
-}
-
-describeFruit(fruit);
-```
+* Data Clump
 
 ## Inappropriate Intimacy
 A class that has dependencies on the implementation details of another class is considered to be too intimate.
