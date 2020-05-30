@@ -11,3 +11,4 @@
 * Temporary Field
 * Refused Bequest
 * Alternative Classes with Different Interfaces
+* Divergent Change
