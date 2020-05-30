@@ -7,3 +7,7 @@
 * Feature Envy
 * Data Clump
 * Inappropriate Intimacy
+* Switch Statements
+* Temporary Field
+* Refused Bequest
+* Alternative Classes with Different Interfaces
