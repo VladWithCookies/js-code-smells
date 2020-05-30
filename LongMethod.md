@@ -1,4 +1,4 @@
-# Long method 
+# LongMethod 
 ## Reason
 Among all types of object-oriented code, classes with short methods live longest. The longer a method or function is, the harder it becomes to understand and maintain it.
 
