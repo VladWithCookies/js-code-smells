@@ -3,6 +3,7 @@
 Whenever you create a subclass for a class, you find yourself needing to create a subclass for another class.
 
 ## Solutions
+### Remove one hierarchy
 ```js
 // Bad
 class Engineer {
