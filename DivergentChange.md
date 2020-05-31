@@ -7,15 +7,30 @@ Often these divergent modifications are due to poor program structure or "copypa
 ## Solutions
 ### Extract Class
 ```js
-// TODO
-```
+// Bad
+class User {
+  //...
+  fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  
+  isAuthorized() {
+    return this.isAdmin();
+  }
+}
 
-### Extract Superclass
-```js
-// TODO
-```
+// Better
+class UserPresenter {
+   //...
+   fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
 
-### Extract Subclass
-```js
-// TODO
+class UserPolicy {
+   //...
+   isAuthorized(user) {
+    return user.isAdmin();
+  }
+}
 ```
