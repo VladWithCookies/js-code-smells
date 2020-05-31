@@ -4,6 +4,7 @@ Understanding and maintaining classes always costs time and money. So if a class
 
 ## Solutions
 ### Inline Class
+```js
 // Bad
 class Person {
   name = 'Vlad';
