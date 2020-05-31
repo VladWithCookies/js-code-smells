@@ -117,7 +117,7 @@ civilEngineer.setSalary(60000);
 civilEngineer.setMileStone(new CivilMileStone());
 
 //Better
-EngineerMileStone {
+class EngineerMileStone {
   //...
 }
 
