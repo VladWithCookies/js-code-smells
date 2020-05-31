@@ -16,4 +16,4 @@
 * Comments
 * Duplicate Code
 * Lazy Class
-* Data Class (TODO)
+* Data Class
