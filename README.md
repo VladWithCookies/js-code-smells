@@ -14,3 +14,5 @@
 * Divergent Change
 * Parallel Inheritance Hierarchies
 * Comments
+* Duplicate Code
+* Lazy Class
