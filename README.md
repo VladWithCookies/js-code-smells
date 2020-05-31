@@ -11,4 +11,6 @@
 * Temporary Field
 * Refused Bequest
 * Alternative Classes with Different Interfaces
-* Divergent Change (TODO)
+* Divergent Change
+* Parallel Inheritance Hierarchies
+* Comments
