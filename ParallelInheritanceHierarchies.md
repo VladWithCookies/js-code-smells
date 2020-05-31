@@ -3,7 +3,6 @@
 Whenever you create a subclass for a class, you find yourself needing to create a subclass for another class.
 
 ## Solutions
-### Move Method & Move Field
 ```js
 // Bad
 class Engineer {
@@ -185,7 +184,7 @@ class CivilEngineer extends EngineerMileStone {
 
 const computerEngineer = new ComputerEngineer();
 
-computerEngineer.setType("Computer Engineer");
+computerEngineer.setType('Computer Engineer');
 computerEngineer.setSalary(50000);
 
 const civilEngineer = new CivilEngineer();
