@@ -17,3 +17,8 @@
 * Duplicate Code
 * Lazy Class
 * Data Class
+* Dead Code
+* Speculative Generality
+* Message Chains
+* Middle Man
+* Incomplete Library Class
